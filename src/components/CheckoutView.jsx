@@ -11,7 +11,7 @@ export default function CheckoutView({ cart, subtotal, discount, shipping, total
   const [form, setForm] = useState({
     firstName: firstName,
     lastName: lastName,
-    email: user?.email || 'marc.t@balmoral.ca',
+    email: user?.email || 'marc.t@bowies.ca',
     phone: user?.phone || '+1 (514) 892-3310',
     address: primaryAddress.street || '1000 Rue Sherbrooke',
     city: primaryAddress.city || 'Montreal, QC',

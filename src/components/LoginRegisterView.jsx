@@ -16,14 +16,14 @@ export default function LoginRegisterView({ onLoginSuccess, showToast }) {
       return;
     }
 
-    const isAdmin = email.toLowerCase().includes('admin') || email.toLowerCase() === 'admin@balmoral.ca';
+    const isAdmin = email.toLowerCase().includes('admin') || email.toLowerCase() === 'admin@bowies.ca';
     const userName = name.trim() || (isAdmin ? 'Admin Director' : email.split('@')[0].charAt(0).toUpperCase() + email.split('@')[0].slice(1));
 
     const loggedUser = {
       name: userName,
       email: email.trim(),
       phone: '+1 (514) 892-3310',
-      tier: isAdmin ? 'Balmoral Executive' : 'Balmoral Elite Member',
+      tier: isAdmin ? 'Bowies Executive' : 'Bowies Elite Member',
       points: isSignup ? 500 : 1450,
       role: isAdmin ? 'admin' : 'customer',
       loggedIn: true,
@@ -33,22 +33,22 @@ export default function LoginRegisterView({ onLoginSuccess, showToast }) {
     };
 
     onLoginSuccess(loggedUser);
-    showToast(isSignup ? `Welcome to Balmoral, ${userName}! +500 points awarded.` : `Welcome back, ${userName}!`);
+    showToast(isSignup ? `Welcome to Bowies, ${userName}! +500 points awarded.` : `Welcome back, ${userName}!`);
   };
 
   return (
     <div className="max-w-md mx-auto py-20 px-6 animate-fade-in">
       <div className="bg-white p-8 sm:p-10 rounded-3xl border border-neutral-200 shadow-xl space-y-6">
         <a href='/'  className='flex justify-center items-center'>
-          <img src="/public/balmoral.png" alt="logo" className='w-7 h-7 rounded-xl mr-2' />
-          <p className='text-3xl font-serif'>BALMORAL</p>
+          <img src="/public/bowies.png" alt="logo" className='w-7 h-7 rounded-xl mr-2' />
+          <p className='text-3xl font-serif'>BOWIES</p>
         </a>
         <div className="text-center space-y-2">
           <span className="text-[10px] uppercase tracking-[0.3em] font-semibold text-neutral-500 bg-neutral-100 px-3.5 py-1.5 rounded-full">
             {isSignup ? 'Create Account' : 'Welcome Back'}
           </span>
           <h2 className="font-serif text-2xl tracking-[0.1em] font-normal text-neutral-900 pt-2">
-            {isSignup ? 'Join Balmoral' : 'Sign In'}
+            {isSignup ? 'Join Bowies' : 'Sign In'}
           </h2>
           <p className="text-xs text-neutral-500 font-light">
             {isSignup ? 'Enter your details to create your membership profile.' : 'Access your order history, wishlist, and rewards.'}
@@ -76,7 +76,7 @@ export default function LoginRegisterView({ onLoginSuccess, showToast }) {
               <Mail className="absolute left-3.5 top-3.5 w-4 h-4 text-neutral-400" />
               <input 
                 type="email" 
-                placeholder="rishi@gmail.com (or admin@balmoral.ca)" 
+                placeholder="rishi@gmail.com (or admin@bowies.ca)" 
                 required 
                 value={email} 
                 onChange={e => setEmail(e.target.value)} 

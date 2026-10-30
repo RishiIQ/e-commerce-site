@@ -9,9 +9,9 @@ export default function InfoPageView({ pageType, onBack }) {
       text: "Explore our comprehensive knowledge base covering product care, technical sizing, order modifications, and global customer support.",
       details: [
         { q: "How do I care for technical merino wool and performance fabrics?", a: "Machine wash cold on a gentle cycle with like colors. Use mild, eco-friendly detergents. Do not use bleach or fabric softeners. Line dry in the shade to maintain technical elasticity and moisture-wicking properties." },
-        { q: "Can I modify or cancel my order after placement?", a: "Because orders are processed immediately at our Montreal fulfillment center to ensure rapid dispatch, modifications are only possible within 30 minutes of placement. Please contact support@balmoral.ca immediately." },
-        { q: "How do Balmoral reward points work?", a: "Every member earns 10 points for every $1 CAD spent. Points can be redeemed for exclusive discounts, early product releases, and complimentary seasonal gear." },
-        { q: "Are all Balmoral garments manufactured sustainably?", a: "Yes. We exclusively source OEKO-TEX certified organic cotton, recycled polyester blends, and ethical merino wool from certified non-mulesing farms." }
+        { q: "Can I modify or cancel my order after placement?", a: "Because orders are processed immediately at our Montreal fulfillment center to ensure rapid dispatch, modifications are only possible within 30 minutes of placement. Please contact support@Bowies.ca immediately." },
+        { q: "How do Bowies reward points work?", a: "Every member earns 10 points for every $1 CAD spent. Points can be redeemed for exclusive discounts, early product releases, and complimentary seasonal gear." },
+        { q: "Are all Bowies garments manufactured sustainably?", a: "Yes. We exclusively source OEKO-TEX certified organic cotton, recycled polyester blends, and ethical merino wool from certified non-mulesing farms." }
       ]
     },
     returns: {
@@ -20,7 +20,7 @@ export default function InfoPageView({ pageType, onBack }) {
       text: "We stand behind the uncompromising craftsmanship of our apparel and hardware with a straightforward 30-day return policy and 2-year warranty.",
       details: [
         { q: "What items are eligible for return?", a: "Any unworn, unwashed item in its original packaging with all tags attached is eligible within 30 days of delivery. Undergarments and clearance items are final sale." },
-        { q: "How do I print my prepaid return shipping label?", a: "Log into your Balmoral Account Profile, navigate to your Order History, select the relevant order, and click 'Start Return'. Your prepaid label will be generated instantly." },
+        { q: "How do I print my prepaid return shipping label?", a: "Log into your Bowies Account Profile, navigate to your Order History, select the relevant order, and click 'Start Return'. Your prepaid label will be generated instantly." },
         { q: "What does the 2-year craftsmanship warranty cover?", a: "Our warranty covers zipper malfunctions, seam failure, bonded fabric separation, and hardware defects under normal athletic use." },
         { q: "Are exchanges free?", a: "Yes! Size and color exchanges incur zero restocking or return shipping fees." }
       ]
@@ -28,7 +28,7 @@ export default function InfoPageView({ pageType, onBack }) {
     shipping: {
       title: "Global Delivery & Fulfillment",
       icon: <Truck className="w-8 h-8 text-neutral-900" />,
-      text: "Designed for cold climates and dispatched worldwide, Balmoral ensures swift, carbon-neutral delivery to your doorstep.",
+      text: "Designed for cold climates and dispatched worldwide, Bowies ensures swift, carbon-neutral delivery to your doorstep.",
       details: [
         { q: "What are the standard shipping timelines?", a: "Canada & US: 2–4 business days via Express Priority. International (UK, EU, Australia, Asia): 4–7 business days via air freight." },
         { q: "Do you offer free shipping?", a: "Yes, complimentary express priority shipping is automatically applied to all orders over $150 CAD." },
@@ -39,11 +39,11 @@ export default function InfoPageView({ pageType, onBack }) {
     terms: {
       title: "Terms, Privacy & Security",
       icon: <FileText className="w-8 h-8 text-neutral-900" />,
-      text: "Balmoral is committed to absolute data privacy, transparent business practices, and secure digital transactions.",
+      text: "Bowies is committed to absolute data privacy, transparent business practices, and secure digital transactions.",
       details: [
         { q: "How is my payment information secured?", a: "We utilize 256-Bit SSL encryption through certified PCI-DSS Level 1 payment gateways. We never store your full credit card credentials on our servers." },
         { q: "How is my personal data handled?", a: "Your personal information is strictly used to process orders, enhance account personalization, and provide member rewards. We never sell or rent data to third-party advertisers." },
-        { q: "Intellectual Property Rights", a: "All original photography, typography, product designs, and software architecture are the exclusive intellectual property of Balmoral Running Inc." }
+        { q: "Intellectual Property Rights", a: "All original photography, typography, product designs, and software architecture are the exclusive intellectual property of Bowies Running Inc." }
       ]
     },
     lookbook: {
@@ -73,7 +73,7 @@ export default function InfoPageView({ pageType, onBack }) {
           </div>
           <div>
             <span className="text-[10px] uppercase tracking-[0.3em] font-semibold text-neutral-500 bg-neutral-100 px-3.5 py-1.5 rounded-full">
-              Balmoral Information Center
+              Bowies Information Center
             </span>
             <h1 className="font-serif text-3xl sm:text-5xl tracking-[0.05em] mt-3 font-normal text-neutral-900">
               {currentInfo.title}
@@ -122,7 +122,7 @@ export default function InfoPageView({ pageType, onBack }) {
         </div>
 
         <div className="pt-8 border-t border-neutral-100 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-neutral-500">
-          <span>Need personalized assistance? Reach us at <strong className="text-neutral-900">support@balmoral.ca</strong></span>
+          <span>Need personalized assistance? Reach us at <strong className="text-neutral-900">support@bowies.ca</strong></span>
           <button onClick={onBack} className="bg-neutral-900 text-white px-8 py-3.5 uppercase tracking-wider rounded-xl font-semibold cursor-pointer hover:bg-neutral-800 transition-all shadow-md">
             Return to Storefront
           </button>

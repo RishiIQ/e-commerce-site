@@ -7,7 +7,7 @@ export default function HomeView({ products, onSelectProduct, onExplore, addToCa
 
   const heroSlides = [
     {
-      title: "BALMORAL",
+      title: "BOWIES",
       subtitle: "Winter 2026 Collection",
       desc: "Winter 2026 focuses on essentials for colder days. Built for everyday use with simplicity and function.",
       image: "https://images.unsplash.com/photo-1782227286076-4f5153a8cdac?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D",
@@ -187,7 +187,7 @@ export default function HomeView({ products, onSelectProduct, onExplore, addToCa
         <div className="p-12 lg:p-24 flex flex-col justify-center space-y-6">
           <span className="text-xs uppercase tracking-[0.25em] text-neutral-500 font-semibold">About Us</span>
           <h2 className="font-serif text-3xl lg:text-4xl tracking-[0.05em] leading-snug">
-            Balmoral was founded in Canada to create timeless garments shaped by the country's distinct climate and way of life.
+            Bowies was founded in Canada to create timeless garments shaped by the country's distinct climate and way of life.
           </h2>
           <div>
             <button onClick={onExplore} className="text-xs uppercase tracking-[0.2em] font-semibold underline hover:opacity-75">Discover Collection</button>

@@ -66,7 +66,7 @@ function StorefrontApp() {
 
   const [products, setProducts] = useState(() => {
     try {
-      const saved = localStorage.getItem('balmoral_products_v7');
+      const saved = localStorage.getItem('bowies_products_v7');
       const rawList = saved ? JSON.parse(saved) : INITIAL_PRODUCTS;
       return getDeduplicatedProducts(rawList);
     } catch (e) {
@@ -76,7 +76,7 @@ function StorefrontApp() {
 
   const [cart, setCart] = useState(() => {
     try {
-      const saved = localStorage.getItem('balmoral_cart_v7');
+      const saved = localStorage.getItem('bowies_cart_v7');
       return saved ? JSON.parse(saved) : [];
     } catch (e) {
       return [];
@@ -85,7 +85,7 @@ function StorefrontApp() {
 
   const [user, setUser] = useState(() => {
     try {
-      const saved = localStorage.getItem('balmoral_user_v7');
+      const saved = localStorage.getItem('bowies_user_v7');
       return saved ? JSON.parse(saved) : { 
         name: '', 
         email: '', 
@@ -103,7 +103,7 @@ function StorefrontApp() {
 
   const [wishlist, setWishlist] = useState(() => {
     try {
-      const saved = localStorage.getItem('balmoral_wishlist_v7');
+      const saved = localStorage.getItem('bowies_wishlist_v7');
       return saved ? JSON.parse(saved) : ['BAL-001', 'BAL-009', 'BAL-013'];
     } catch (e) {
       return [];
@@ -112,7 +112,7 @@ function StorefrontApp() {
 
   const [orders, setOrders] = useState(() => {
     try {
-      const saved = localStorage.getItem('balmoral_orders_v7');
+      const saved = localStorage.getItem('bowies_orders_v7');
       return saved ? JSON.parse(saved) : [
         { id: 'BLM-8821', date: '2026-02-19', total: 160.00, status: 'Delivered', tracking: 'TRK-9928104', items: [{ name: 'White Men Shirt', qty: 1, price: 16.00, image: 'https://images.pexels.com/photos/28710328/pexels-photo-28710328.jpeg' }] },
         { id: 'BLM-9104', date: '2026-02-24', total: 299.00, status: 'In Transit', tracking: 'TRK-4412993', items: [{ name: 'Apple Smartwatch', qty: 1, price: 299.00, image: 'https://images.pexels.com/photos/5083216/pexels-photo-5083216.jpeg' }] }
@@ -124,7 +124,7 @@ function StorefrontApp() {
 
   const [reviews, setReviews] = useState(() => {
     try {
-      const saved = localStorage.getItem('balmoral_reviews_v7');
+      const saved = localStorage.getItem('bowies_reviews_v7');
       return saved ? JSON.parse(saved) : INITIAL_REVIEWS;
     } catch (e) {
       return INITIAL_REVIEWS;
@@ -139,27 +139,27 @@ function StorefrontApp() {
   const [promoError, setPromoError] = useState('');
 
   useEffect(() => {
-    try { localStorage.setItem('balmoral_products_v7', JSON.stringify(products)); } catch(e){}
+    try { localStorage.setItem('bowies_products_v7', JSON.stringify(products)); } catch(e){}
   }, [products]);
 
   useEffect(() => {
-    try { localStorage.setItem('balmoral_cart_v7', JSON.stringify(cart)); } catch(e){}
+    try { localStorage.setItem('bowies_cart_v7', JSON.stringify(cart)); } catch(e){}
   }, [cart]);
 
   useEffect(() => {
-    try { localStorage.setItem('balmoral_user_v7', JSON.stringify(user)); } catch(e){}
+    try { localStorage.setItem('bowies_user_v7', JSON.stringify(user)); } catch(e){}
   }, [user]);
 
   useEffect(() => {
-    try { localStorage.setItem('balmoral_wishlist_v7', JSON.stringify(wishlist)); } catch(e){}
+    try { localStorage.setItem('bowies_wishlist_v7', JSON.stringify(wishlist)); } catch(e){}
   }, [wishlist]);
 
   useEffect(() => {
-    try { localStorage.setItem('balmoral_orders_v7', JSON.stringify(orders)); } catch(e){}
+    try { localStorage.setItem('bowies_orders_v7', JSON.stringify(orders)); } catch(e){}
   }, [orders]);
 
   useEffect(() => {
-    try { localStorage.setItem('balmoral_reviews_v7', JSON.stringify(reviews)); } catch(e){}
+    try { localStorage.setItem('bowies_reviews_v7', JSON.stringify(reviews)); } catch(e){}
   }, [reviews]);
 
   const showToast = (msg) => {
@@ -222,12 +222,12 @@ function StorefrontApp() {
   const cartTotal = Math.max(0, cartSubtotal - discountAmount + shippingFee);
 
   const applyPromo = () => {
-    if (promoCode.trim().toUpperCase() === 'BALMORAL10') {
+    if (promoCode.trim().toUpperCase() === 'BOWIES10') {
       setDiscountPercent(10);
       setPromoSuccess('10% discount applied.');
       setPromoError('');
     } else {
-      setPromoError('Invalid promo code. Try "BALMORAL10"');
+      setPromoError('Invalid promo code. Try "BOWIES10"');
       setPromoSuccess('');
     }
   };
@@ -284,12 +284,12 @@ function StorefrontApp() {
               className="group inline-flex items-center justify-center space-x-3 cursor-pointer"
             >
               <img 
-                src="/balmoral.png" 
-                alt="Balmoral Logo" 
+                src="/bowies.png" 
+                alt="Bowies Logo" 
                 className="w-8 h-8 object-contain transform group-hover:scale-110 rounded-xl transition-transform duration-300" 
               />
               <span className="font-serif text-xl sm:text-2xl tracking-[0.4em] font-normal uppercase text-neutral-900 group-hover:opacity-75 transition-opacity">
-                BALMORAL
+                BOWIES
               </span>
             </Link>
           </div>
@@ -338,11 +338,11 @@ function StorefrontApp() {
             <div className="space-y-6">
               <div className="flex justify-between items-center border-b border-neutral-200 pb-4">
                 <img 
-                  src="/balmoral.png" 
-                  alt="Balmoral Logo" 
+                  src="/bowies.png" 
+                  alt="Bowies Logo" 
                   className="w-8 h-8 object-contain transform group-hover:scale-110 rounded-xl transition-transform duration-300" 
                 />
-                <span className="font-serif text-lg tracking-[0.2em]">BALMORAL</span>
+                <span className="font-serif text-lg tracking-[0.2em]">BOWIES</span>
                 <button onClick={() => setIsMobileMenuOpen(false)} className="p-2 cursor-pointer"><X className="w-5 h-5" /></button>
               </div>
               <nav className="flex flex-col space-y-4 text-sm uppercase tracking-widest font-medium">
@@ -527,7 +527,7 @@ function StorefrontApp() {
                   <div className="flex space-x-2">
                     <input 
                       type="text" 
-                      placeholder="Promo Code (BALMORAL10)" 
+                      placeholder="Promo Code (BOWIES10)" 
                       value={promoCode} 
                       onChange={(e) => setPromoCode(e.target.value)}
                       className="flex-1 bg-white border border-neutral-300 px-3.5 py-2.5 text-xs focus:outline-none rounded-lg font-medium"
@@ -656,7 +656,7 @@ function StorefrontApp() {
             </div>
           </div>
           <div className="max-w-[1600px] mx-auto px-6 lg:px-12 mt-20 pt-8 border-t border-neutral-100 flex flex-col md:flex-row justify-between items-center text-[10px] uppercase tracking-[0.2em] text-neutral-500 font-medium">
-            <span>Copyright © 2026 Balmoral Running</span>
+            <span>Copyright © 2026 Bowies Running</span>
             <span>Credits MILL3</span>
           </div>
         </footer>
