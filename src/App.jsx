@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter, Routes, Route, useNavigate, useParams, Link } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useNavigate, useParams, Link, useLocation } from 'react-router-dom';
 import { ShoppingBag, Search, User, Menu, X, Trash2, Plus, Minus, ArrowRight } from 'lucide-react';
+import NotFoundView from './components/NotFoundView';
 
 import { INITIAL_PRODUCTS, INITIAL_REVIEWS, getDeduplicatedProducts } from './data/products';
 import HomeView from './components/HomeView';
@@ -39,6 +40,7 @@ function InfoPageWrapper() {
 
 function StorefrontApp() {
   const navigate = useNavigate();
+  const location = useLocation();
 
   const [shopCategory, setShopCategory] = useState('All');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -230,7 +232,11 @@ function StorefrontApp() {
     }
   };
 
-  const isLoginPage = window.location.pathname === '/login';
+  // Determine if we should hide the navigation and footer
+  const validStaticPaths = ['/', '/shop', '/checkout', '/profile', '/admin', '/login'];
+  const isDynamicValid = location.pathname.startsWith('/product/') || location.pathname.startsWith('/info/');
+  const isKnownPage = validStaticPaths.includes(location.pathname) || isDynamicValid;
+  const hideNavAndFooter = location.pathname === '/login' || !isKnownPage;
 
   return (
     <div className="min-h-screen bg-neutral-50 text-neutral-900 font-sans selection:bg-neutral-900 selection:text-white">
@@ -269,24 +275,24 @@ function StorefrontApp() {
         </div>
       )}
 
-      {/* Top Navigation Header - Hidden on Login View */}
-      {!isLoginPage && (
+      {/* Top Navigation Header - Hidden on Login and 404 Views */}
+      {!hideNavAndFooter && (
         <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-neutral-200 transition-all duration-300 shadow-xs">
           <div className="py-5 text-center border-b border-neutral-100 bg-white">
-  <Link 
-    to="/" 
-    className="group inline-flex items-center justify-center space-x-3 cursor-pointer"
-  >
-    <img 
-      src="/balmoral.png" 
-      alt="Balmoral Logo" 
-      className="w-8 h-8 object-contain transform group-hover:scale-110 rounded-xl transition-transform duration-300" 
-    />
-    <span className="font-serif text-xl sm:text-2xl tracking-[0.4em] font-normal uppercase text-neutral-900 group-hover:opacity-75 transition-opacity">
-      BALMORAL
-    </span>
-  </Link>
-</div>
+            <Link 
+              to="/" 
+              className="group inline-flex items-center justify-center space-x-3 cursor-pointer"
+            >
+              <img 
+                src="/balmoral.png" 
+                alt="Balmoral Logo" 
+                className="w-8 h-8 object-contain transform group-hover:scale-110 rounded-xl transition-transform duration-300" 
+              />
+              <span className="font-serif text-xl sm:text-2xl tracking-[0.4em] font-normal uppercase text-neutral-900 group-hover:opacity-75 transition-opacity">
+                BALMORAL
+              </span>
+            </Link>
+          </div>
 
           <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-12 h-16 flex items-center justify-between text-xs uppercase tracking-[0.18em]">
             <div className="flex items-center lg:hidden">
@@ -304,16 +310,15 @@ function StorefrontApp() {
             </nav>
 
             <div className="flex items-center space-x-3 sm:space-x-6 text-neutral-800 font-medium ml-auto lg:ml-0">
-              
               <Link 
-  to={user && user.loggedIn ? "/profile" : "/login"} 
-  className="bg-blue-200 hover:bg-blue-500 text-black hover:text-white px-4 py-2.5 rounded-xl hover:rounded-full transition-all duration-100  cursor-pointer flex items-center gap-1.5 shadow-sm hover:shadow-md active:scale-95"
-  title="Account"
->
-  <User className="w-4 h-4" />
-  <span className="hidden md:inline">{user && user.loggedIn ? user.name.split(' ')[0] : 'Login'}</span>
-</Link>
-              <button onClick={() => setIsCartOpen(true)} className="hover:text-white transition-colors font-medium flex items-center gap-1.5 cursor-pointer bg-gray-300 hover:bg-gray-900 text-black px-3.5 sm:px-4 py-2 rounded-full shadow-sm hover:bg-neutral-800">
+                to={user && user.loggedIn ? "/profile" : "/login"} 
+                className="bg-blue-200 hover:bg-blue-500 text-black hover:text-white px-4 py-2.5 rounded-xl hover:rounded-full transition-all duration-100 cursor-pointer flex items-center gap-1.5 shadow-sm hover:shadow-md active:scale-95"
+                title="Account"
+              >
+                <User className="w-4 h-4" />
+                <span className="hidden md:inline">{user && user.loggedIn ? user.name.split(' ')[0] : 'Login'}</span>
+              </Link>
+              <button onClick={() => setIsCartOpen(true)} className="hover:text-white transition-colors font-medium flex items-center gap-1.5 cursor-pointer bg-gray-300 hover:bg-gray-900 text-black px-3.5 sm:px-4 py-2 rounded-full shadow-sm">
                 <ShoppingBag className="w-4 h-4" /> 
                 <span>Cart ({cart.reduce((s, i) => s + i.qty, 0)})</span>
               </button>
@@ -333,10 +338,10 @@ function StorefrontApp() {
             <div className="space-y-6">
               <div className="flex justify-between items-center border-b border-neutral-200 pb-4">
                 <img 
-                    src="/balmoral.png" 
-                    alt="Balmoral Logo" 
-                    className="w-8 h-8 object-contain transform group-hover:scale-110 rounded-xl transition-transform duration-300" 
-                  />
+                  src="/balmoral.png" 
+                  alt="Balmoral Logo" 
+                  className="w-8 h-8 object-contain transform group-hover:scale-110 rounded-xl transition-transform duration-300" 
+                />
                 <span className="font-serif text-lg tracking-[0.2em]">BALMORAL</span>
                 <button onClick={() => setIsMobileMenuOpen(false)} className="p-2 cursor-pointer"><X className="w-5 h-5" /></button>
               </div>
@@ -458,6 +463,9 @@ function StorefrontApp() {
               showToast={showToast}
             />
           } />
+
+          {/* 404 Fallback Route */}
+          <Route path="*" element={<NotFoundView />} />
         </Routes>
       </main>
 
@@ -561,7 +569,7 @@ function StorefrontApp() {
                         navigate('/checkout'); 
                       }
                     }}
-                    className="w-full bg-neutral-900 text-white py-4 text-xs uppercase tracking-[0.2em] font-semibold hover:bg-neutral-800 transition-all rounded-xl shadow-lg flex items-center justify-center space-x-2 group cursor-pointer"
+                    className="w-full bg-neutral-900 text-white py-4 text-xs uppercase tracking-[0.2em] font-semibold hover:bg-neutral-800 transition-all rounded-lg shadow-lg flex items-center justify-center space-x-2 group cursor-pointer"
                   >
                     <span>Proceed to Checkout</span>
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -573,8 +581,8 @@ function StorefrontApp() {
         </div>
       )}
 
-      {/* Footer - Hidden on Login View */}
-      {!isLoginPage && (
+      {/* Footer - Hidden on Login and 404 Views */}
+      {!hideNavAndFooter && (
         <footer className="bg-white border-t border-neutral-200 py-24 text-neutral-800">
           <div className="max-w-[1600px] mx-auto px-6 lg:px-12 grid grid-cols-1 md:grid-cols-4 gap-12 text-xs">
             <div className="space-y-4">
