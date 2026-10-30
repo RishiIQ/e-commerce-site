@@ -13,6 +13,7 @@ import AdminDashboard from './components/AdminDashboard';
 import LoginRegisterView from './components/LoginRegisterView';
 import InfoPageView from './components/InfoPageView';
 
+
 // Wrapper component to handle product detail routing parameter
 function ProductDetailWrapper({ products, addToCart, reviews, onAddReview, wishlist, toggleWishlist }) {
   const { id } = useParams();
@@ -278,7 +279,7 @@ function StorefrontApp() {
       {/* Top Navigation Header - Hidden on Login and 404 Views */}
       {!hideNavAndFooter && (
         <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-neutral-200 transition-all duration-300 shadow-xs">
-          <div className="py-5 text-center border-b border-neutral-100 bg-white">
+          <div className="py-5 text-center border-b border-neutral-100 bg-black">
             <Link 
               to="/" 
               className="group inline-flex items-center justify-center space-x-3 cursor-pointer"
@@ -288,7 +289,7 @@ function StorefrontApp() {
                 alt="Bowies Logo" 
                 className="w-8 h-8 object-contain transform group-hover:scale-110 rounded-xl transition-transform duration-300" 
               />
-              <span className="font-serif text-xl sm:text-2xl tracking-[0.4em] font-normal uppercase text-neutral-900 group-hover:opacity-75 transition-opacity">
+              <span className="font-serif text-xl sm:text-2xl tracking-[0.4em] font-normal uppercase   text-neutral-100 group-hover:opacity-75 transition-opacity">
                 BOWIES
               </span>
             </Link>
@@ -372,6 +373,7 @@ function StorefrontApp() {
       {/* Routes Configuration */}
       <main className="transition-all duration-500">
         <Routes>
+          
           <Route path="/" element={
             <HomeView 
               products={products} 
@@ -585,6 +587,7 @@ function StorefrontApp() {
       {!hideNavAndFooter && (
         <footer className="bg-white border-t border-neutral-200 py-24 text-neutral-800">
           <div className="max-w-[1600px] mx-auto px-6 lg:px-12 grid grid-cols-1 md:grid-cols-4 gap-12 text-xs">
+            
             <div className="space-y-4">
               <h4 className="uppercase tracking-[0.2em] font-semibold text-neutral-900">Contact Us</h4>
               <ul className="space-y-2 text-neutral-600">

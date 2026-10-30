@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Heart } from 'lucide-react';
 
+
 export default function HomeView({ products, onSelectProduct, onExplore, addToCart, wishlist, toggleWishlist }) {
   const [scrollY, setScrollY] = useState(0);
   const [currentHeroSlide, setCurrentHeroSlide] = useState(0);
@@ -45,6 +46,7 @@ export default function HomeView({ products, onSelectProduct, onExplore, addToCa
 
   return (
     <div className="space-y-24 animate-fade-in pb-16 pt-2">
+     
       <section className="relative h-[85vh] w-full flex items-center justify-center overflow-hidden bg-neutral-900 reveal-down-scroll active">
         {heroSlides.map((slide, index) => (
           <div 

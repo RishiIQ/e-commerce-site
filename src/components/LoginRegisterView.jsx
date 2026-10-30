@@ -40,7 +40,7 @@ export default function LoginRegisterView({ onLoginSuccess, showToast }) {
     <div className="max-w-md mx-auto py-20 px-6 animate-fade-in">
       <div className="bg-white p-8 sm:p-10 rounded-3xl border border-neutral-200 shadow-xl space-y-6">
         <a href='/'  className='flex justify-center items-center'>
-          <img src="/public/bowies.png" alt="logo" className='w-7 h-7 rounded-xl mr-2' />
+          <img src="/bowies.png" alt="logo" className='w-7 h-7 rounded-xl mr-2' />
           <p className='text-3xl font-serif'>BOWIES</p>
         </a>
         <div className="text-center space-y-2">
